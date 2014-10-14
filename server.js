@@ -7,7 +7,7 @@ var http = require('http') ,
 //default ip and ports
 var ipadress   = '127.0.0.1';
 var port       = 8080;
-var app_name   = 'pf';
+var app_name   = 'db';
 //get process environment variables and set connection options
 var pe = process.env;
 var server_env = {
@@ -19,7 +19,7 @@ var server_env = {
     mongo_host       : pe.OPENSHIFT_MONGODB_DB_HOST ,
     mongo_port       : pe.OPENSHIFT_MONGODB_DB_PORT ,
     mongo_url        : pe.OPENSHIFT_MONGODB_DB_URL ,
-    mongo_connection : 'mongodb://localhost/pf'
+    mongo_connection : 'mongodb://localhost/db'
 };
 if(server_env.mongo_password) {
     server_env.mongo_connection = server_env.mongo_username + ':' + server_env.mongo_password + '@' + server_env.mongo_host + ':' + server_env.mongo_port + '/' + server_env.appname;
