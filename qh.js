@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var mongo_query = 'mongodb';
 var response;  // xhr response
 exports.handle = function (query, mongo_connection, res) {
     response = res; // set
@@ -130,8 +129,9 @@ var queryToMongo = function (_query) {
 };
 //stage 3 (send response)
 var sendResponse = function (data) {
-    response.writeHead(200, {"Content-Type": "text/plain",
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" });
+    response.writeHead(200, {"Content-Type": "application/json",
+                             "Content-Length": data.length,
+                             "Access-Control-Allow-Origin": "*",
+                             "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" });
     response.end(data);
 };
